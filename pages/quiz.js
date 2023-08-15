@@ -11,7 +11,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
 import { Chip } from '@nextui-org/react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from '@nextui-org/react';
+import { useRouter } from 'next/router';
 export default function Quiz() {
+  const router = useRouter();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [preguntas, setPreguntas] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -85,6 +87,11 @@ export default function Quiz() {
         setPage(0);
       }
     }
+  };
+
+  const handleClose = () => {
+    onOpenChange(false);
+    router.reload();
   };
 
   return (
@@ -169,7 +176,7 @@ export default function Quiz() {
                 <p>Has acertado un {((aciertos / numPreguntas) * 100).toFixed(2)}%</p>
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="light" onClick={onClose}>
+                <Button color="danger" variant="light" onClick={handleClose}>
                   Volver a intentar
                 </Button>
               </ModalFooter>
