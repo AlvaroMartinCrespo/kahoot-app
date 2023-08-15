@@ -9,11 +9,16 @@ import { Pagination, PaginationItem, PaginationCursor } from '@nextui-org/react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Link from 'next/link';
+import { Chip } from '@nextui-org/react';
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from '@nextui-org/react';
 export default function Quiz() {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [preguntas, setPreguntas] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
+  const [numPreguntas, setNumPreguntas] = useState(0);
   const [pregunta, setPregunta] = useState([]);
+  const [aciertos, setAciertos] = useState(0);
   // Se efectuara este codigo una vez entre en la pagina o se carge de nuevo.
   useEffect(() => {
     const fetchQuest = async () => {
@@ -27,6 +32,7 @@ export default function Quiz() {
       }
       // Seteamos las preguntas
       setPreguntas(Preguntas);
+      setNumPreguntas(Preguntas.length);
       setPregunta(Preguntas[page]);
       // Seteamos el loading a false para que deje de cargar
 
@@ -37,16 +43,16 @@ export default function Quiz() {
   }, [page]);
 
   // Cambia la pagina y con ello la pregunta
-  const handleChange = (e) => {
-    setPage(e - 1);
-  };
+  // const handleChange = (e) => {
+  //   setPage(e - 1);
+  // };
 
   const handleClick = (e) => {
     const respuesta = e.target.innerText;
     if (respuesta === pregunta.correcta) {
-      toast.success('Respuesta correcta', {
+      toast.success('Correcta', {
         position: 'bottom-right',
-        autoClose: 800,
+        autoClose: 300,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -54,10 +60,17 @@ export default function Quiz() {
         progress: undefined,
         theme: 'colored',
       });
+      setAciertos(aciertos + 1);
+      if (page + 1 < numPreguntas) {
+        setPage(page + 1);
+      } else {
+        onOpen();
+        setPage(0);
+      }
     } else {
-      toast.error('Respuesta incorrecta', {
+      toast.error('Incorrecta', {
         position: 'bottom-right',
-        autoClose: 800,
+        autoClose: 300,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -65,6 +78,12 @@ export default function Quiz() {
         progress: undefined,
         theme: 'colored',
       });
+      if (page + 1 < numPreguntas) {
+        setPage(page + 1);
+      } else {
+        onOpen();
+        setPage(0);
+      }
     }
   };
 
@@ -115,7 +134,12 @@ export default function Quiz() {
                         <CardFooter></CardFooter>
                       </Card>
                     </section>
-                    <Pagination total={preguntas.length} onChange={handleChange} initialPage={page + 1} />
+                    {/* <Pagination total={preguntas.length} onChange={handleChange} initialPage={page + 1} /> */}
+                    <div className="flex justify-center">
+                      <Chip color="warning" variant="flat">
+                        {aciertos} / {numPreguntas}
+                      </Chip>
+                    </div>
                   </>
                 ) : (
                   <>
@@ -133,6 +157,26 @@ export default function Quiz() {
           </Button>
         </section>
       </Layout>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Revisión</ModalHeader>
+              <ModalBody>
+                <p>
+                  Has acertado {aciertos} de {numPreguntas}
+                </p>
+                <p>Has acertado un {((aciertos / numPreguntas) * 100).toFixed(2)}%</p>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onClick={onClose}>
+                  Volver a intentar
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </>
   );
 }
