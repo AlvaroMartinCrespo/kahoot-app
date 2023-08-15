@@ -8,7 +8,7 @@ export default function Home() {
       <Layout title="Inicio">
         <section>
           <div className="flex justify-center">
-            <h1>Inicio</h1>
+            <h1>Bienvenido a Kahoot</h1>
           </div>
         </section>
       </Layout>

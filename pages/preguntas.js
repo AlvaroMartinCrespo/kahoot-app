@@ -1,8 +1,11 @@
 import Layout from '@/components/Layout';
 import { Input } from '@nextui-org/react';
 import { Button } from '@nextui-org/react';
+import { supabaseClient } from '../supabase/client';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Preguntas() {
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Obtener los datos del formulario con formData
     const form = e.target;
@@ -14,9 +17,32 @@ export default function Preguntas() {
       incorrecta2: formData.get('incorrecta2'),
       incorrecta3: formData.get('incorrecta3'),
     };
-    console.log(quest);
-    // Aqui hay que hacer fetch a la API interna que tengamos para mandar las preguntas y que las agregen a la base de datos
-    
+    // console.log(quest);
+    // Insertar los datos en la base de datos
+    const { data, error } = await supabaseClient.from('Preguntas').insert([
+      {
+        pregunta: quest.pregunta,
+        correcta: quest.correcta,
+        incorrecta1: quest.incorrecta1,
+        incorrecta2: quest.incorrecta2,
+        incorrecta3: quest.incorrecta3,
+      },
+    ]);
+    if (!error) {
+      toast.success('Pregunta agregada', {
+        position: 'bottom-right',
+        autoClose: 800,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+      form.reset();
+    } else {
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -48,6 +74,7 @@ export default function Preguntas() {
             </form>
           </div>
         </section>
+        <ToastContainer />
       </Layout>
     </>
   );
