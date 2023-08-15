@@ -4,7 +4,7 @@ import Header from './Header';
 
 const Layout = ({ title, children }) => {
   return (
-    <div className="bg-slate-100 h-screen text-black">
+    <div className="bg-slate-50 h-screen text-black">
       <Head>
         <title>{title ? title : 'Next App'}</title>
         <meta name="description" content="Next App" />
