@@ -4,6 +4,7 @@ import { Button } from '@nextui-org/react';
 import { supabaseClient } from '../supabase/client';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link';
 export default function Preguntas() {
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,9 +67,12 @@ export default function Preguntas() {
                 <Input type="text" color="success" name="incorrecta2" label="Respuesta 3" className="max-w-[220px]" />
                 <Input type="text" color="warning" name="incorrecta3" label="Respuesta 4" className="max-w-[220px]" />
               </div>
-              <div className="flex justify-center mt-10">
+              <div className="flex justify-center mt-10 flex-col gap-5">
                 <Button type="submit" color="primary" variant="ghost">
                   Agregar Pregunta
+                </Button>
+                <Button>
+                  <Link href="/quiz">Ir a Quiz</Link>
                 </Button>
               </div>
             </form>

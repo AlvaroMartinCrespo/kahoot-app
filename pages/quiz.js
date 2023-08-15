@@ -6,6 +6,8 @@ import { supabaseClient } from '../supabase/client';
 import { Card, CardHeader, CardBody, CardFooter, Divider } from '@nextui-org/react';
 import { Button } from '@nextui-org/react';
 import { Pagination, PaginationItem, PaginationCursor } from '@nextui-org/react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Quiz() {
   const [preguntas, setPreguntas] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -14,7 +16,6 @@ export default function Quiz() {
   // Se efectuara este codigo una vez entre en la pagina o se carge de nuevo.
   useEffect(() => {
     const fetchQuest = async () => {
-      console.log(page);
       // Set loading
       setLoading(true);
       // Obtenemos las preguntas
@@ -113,6 +114,7 @@ export default function Quiz() {
             )}
           </div>
         </section>
+        <ToastContainer />
       </Layout>
     </>
   );
