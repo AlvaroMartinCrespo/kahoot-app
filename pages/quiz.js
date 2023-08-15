@@ -8,6 +8,7 @@ import { Button } from '@nextui-org/react';
 import { Pagination, PaginationItem, PaginationCursor } from '@nextui-org/react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from 'next/link';
 export default function Quiz() {
   const [preguntas, setPreguntas] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -44,6 +45,17 @@ export default function Quiz() {
     const respuesta = e.target.innerText;
     if (respuesta === pregunta.correcta) {
       toast.success('Respuesta correcta', {
+        position: 'bottom-right',
+        autoClose: 800,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    } else {
+      toast.error('Respuesta incorrecta', {
         position: 'bottom-right',
         autoClose: 800,
         hideProgressBar: false,
@@ -115,6 +127,11 @@ export default function Quiz() {
           </div>
         </section>
         <ToastContainer />
+        <section className="flex justify-center">
+          <Button>
+            <Link href="/preguntas">Añadir más preguntas</Link>
+          </Button>
+        </section>
       </Layout>
     </>
   );

@@ -34,7 +34,7 @@ const Header = () => {
               Quiz
             </Link>
           </NavbarItem>
-          <NavbarItem isActive>
+          <NavbarItem>
             <Link href="/preguntas" aria-current="page">
               Añadir Preguntas
             </Link>
@@ -43,12 +43,7 @@ const Header = () => {
         <NavbarMenu>
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={index === 2 ? 'primary' : index === menuItems.length - 1 ? 'danger' : 'foreground'}
-                className="w-full"
-                href={item.url}
-                size="lg"
-              >
+              <Link color={'foreground'} className="w-full" href={item.url} size="lg">
                 {item.name}
               </Link>
             </NavbarMenuItem>
