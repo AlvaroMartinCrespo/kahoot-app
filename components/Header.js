@@ -19,8 +19,8 @@ const Header = () => {
     { name: 'Añadir Preguntas', url: '/preguntas' },
   ];
   return (
-    <header className="p-3">
-      <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <header className="p-3 bg-slate-200">
+      <Navbar className="bg-slate-200" onMenuOpenChange={setIsMenuOpen}>
         <NavbarContent>
           <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="sm:hidden" />
           <NavbarBrand>
@@ -40,7 +40,7 @@ const Header = () => {
             </Link>
           </NavbarItem>
         </NavbarContent>
-        <NavbarMenu>
+        <NavbarMenu className="bg-slate-200">
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link color={'foreground'} className="w-full" href={item.url} size="lg">

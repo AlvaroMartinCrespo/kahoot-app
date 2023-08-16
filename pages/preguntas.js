@@ -46,6 +46,23 @@ export default function Preguntas() {
     }
   };
 
+  const handleClick = async () => {
+    const { error } = await supabaseClient.from('Preguntas').delete().neq('id', -1);
+    console.log({ error });
+    if (!error) {
+      toast.success('Preguntas eliminadas', {
+        position: 'bottom-right',
+        autoClose: 800,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    }
+  };
+
   return (
     <>
       <Layout title="Preguntas">
@@ -70,6 +87,9 @@ export default function Preguntas() {
               <div className="flex justify-center mt-10 flex-col gap-5">
                 <Button type="submit" color="primary" variant="ghost">
                   Agregar Pregunta
+                </Button>
+                <Button onClick={handleClick} color="danger" variant="ghost">
+                  Eliminar preguntas
                 </Button>
                 <Button>
                   <Link href="/quiz">Ir a Quiz</Link>

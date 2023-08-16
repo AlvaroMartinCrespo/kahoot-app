@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { Chip } from '@nextui-org/react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from '@nextui-org/react';
 import { useRouter } from 'next/router';
+import { shuffle } from '@/utils/shuffleArray';
 export default function Quiz() {
   const router = useRouter();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -21,6 +22,7 @@ export default function Quiz() {
   const [numPreguntas, setNumPreguntas] = useState(0);
   const [pregunta, setPregunta] = useState([]);
   const [aciertos, setAciertos] = useState(0);
+  const [respuesta, setRespuestas] = useState([]);
   // Se efectuara este codigo una vez entre en la pagina o se carge de nuevo.
   useEffect(() => {
     const fetchQuest = async () => {
@@ -36,6 +38,16 @@ export default function Quiz() {
       setPreguntas(Preguntas);
       setNumPreguntas(Preguntas.length);
       setPregunta(Preguntas[page]);
+      if (Preguntas.length > 0) {
+        const respuestas = [
+          Preguntas[page].correcta,
+          Preguntas[page].incorrecta1,
+          Preguntas[page].incorrecta2,
+          Preguntas[page].incorrecta3,
+        ];
+        setRespuestas(shuffle(respuestas));
+      }
+
       // Seteamos el loading a false para que deje de cargar
 
       setLoading(false);
@@ -115,7 +127,14 @@ export default function Quiz() {
                         <Divider />
                         <CardBody>
                           <section className="grid grid-cols-2 gap-5">
-                            <div>
+                            {respuesta.map((pregunta, index) => {
+                              return (
+                                <Button key={index} color="primary" onClick={handleClick} variant="flat">
+                                  {pregunta}
+                                </Button>
+                              );
+                            })}
+                            {/* <div>
                               <Button color="primary" onClick={handleClick} variant="flat">
                                 {pregunta.correcta}
                               </Button>
@@ -134,7 +153,7 @@ export default function Quiz() {
                               <Button color="primary" onClick={handleClick} variant="flat">
                                 {pregunta.incorrecta3}
                               </Button>
-                            </div>
+                            </div> */}
                           </section>
                         </CardBody>
                         <Divider />
