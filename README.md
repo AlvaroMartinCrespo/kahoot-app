@@ -6,7 +6,7 @@ Kahoot Clone in Next.js, featuring Tailwind styling and powered by Supabase back
 
 ## Demo
 
-Demo [aquí](https://weather-api-eta-rose.vercel.app/).
+Demo [aquí](https://kahoot-app.vercel.app/).
 
 ## Capturas de pantalla
 
@@ -25,8 +25,9 @@ Demo [aquí](https://weather-api-eta-rose.vercel.app/).
 
 ## Used Technologies
 
-- ReactJS: JavaScript library for building user interfaces.
+- NextJS: Next.js is a React.js-based development framework that streamlines the creation of modern, high-performance web applications through server-side rendering and static site generation.
 - Tailwind CSS: Utility CSS framework for styling the project.
+- Supabase: Supabase is an open-source platform that combines the ease of use of a no-code platform with the power of a backend-as-a-service. It provides developers with tools to build applications with databases, authentication, APIs, and real-time updates without needing to manage the underlying infrastructure.
 
 ## Instalación
 
