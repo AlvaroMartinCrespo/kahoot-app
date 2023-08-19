@@ -1,38 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather API
 
-## Getting Started
+## About
 
-First, run the development server:
+Discover real-time weather conditions for any city worldwide with our intuitive weather search platform. Simply enter the name of the city you're interested in, and instantly access up-to-date temperature, humidity, wind speed, and more.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Demo [aquí](https://weather-api-eta-rose.vercel.app/).
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Capturas de pantalla
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+![Captura de pantalla 1](public/cap/cap1.png)
+![Captura de pantalla 2](public/cap/cap2.png)
+![Captura de pantalla 2](public/cap/cap3.png)
+![Captura de pantalla 2](public/cap/cap4.png)
+![Captura de pantalla 2](public/cap/cap5.png)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Characteristics
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Modern and attractive design.
+- Completely responsive and compatible with different devices.
+- Easy navigation and intuitive structure.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Used Technologies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- ReactJS: JavaScript library for building user interfaces.
+- Tailwind CSS: Utility CSS framework for styling the project.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Instalación
 
-## Deploy on Vercel
+1. Clona este repositorio en tu máquina local.
+2. Navega hasta el directorio del proyecto.
+3. Ejecuta el siguiente comando para instalar las dependencias:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```shell
+   npm install 
+   ```
+4. Una vez finalizada la instalación, ejecuta el siguiente comando para iniciar la aplicación:
+     ```shell
+   npm run dev
+   ```
+5. Abre tu navegador y visita el puerto que te de por defecto, en mi caso; http://localhost:3000 para ver el portfolio en tu entorno local.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contribución
+¡Las contribuciones son bienvenidas! Si encuentras algún error o tienes alguna sugerencia, por favor, abre un issue o envía una pull request.
+
+## Contacto
+Si deseas contactarme, puedes enviarme un correo electrónico a alvaro.martin.crespo.00@gmail.com o visitar mi [sitio web](https://alvarodev.vercel.app/) para obtener más información.
+
