@@ -21,6 +21,7 @@ Demo [aquí](https://kahoot-app.vercel.app/).
 - Modern and attractive design.
 - Completely responsive and compatible with different devices.
 - Easy navigation and intuitive structure.
+- Posibility to create questions and response the questions
 
 
 ## Used Technologies
