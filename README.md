@@ -1,8 +1,8 @@
-# Weather API
+# Kahoot API
 
 ## About
 
-Discover real-time weather conditions for any city worldwide with our intuitive weather search platform. Simply enter the name of the city you're interested in, and instantly access up-to-date temperature, humidity, wind speed, and more.
+Kahoot Clone in Next.js, featuring Tailwind styling and powered by Supabase backend. Create and play real-time interactive quizzes. Enjoy an immersive learning experience with secure authentication. Have fun learning!
 
 ## Demo
 
